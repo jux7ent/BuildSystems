@@ -5,7 +5,7 @@ find_package(PythonInterp REQUIRED)
 if(PYTHONINTERP_FOUND)
     add_custom_command(
         OUTPUT index.h
-        COMMAND python ${PROJECT_SOURCE_DIR}/preparing.py
+	COMMAND ${PYTHON_EXECUTABLE} ${PROJECT_SOURCE_DIR}/preparing.py
         DEPENDS ${PROJECT_SOURCE_DIR}/preparing.py
     )
 else()
