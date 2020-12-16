@@ -8,6 +8,8 @@ if(PYTHONINTERP_FOUND)
         COMMAND python ${PROJECT_SOURCE_DIR}/preparing.py
         DEPENDS ${PROJECT_SOURCE_DIR}/preparing.py
     )
-endif ()
+else()
+    message(FATAL_ERROR "Python interpreter not found")
+endif()
 
 add_custom_target(gen_index DEPENDS index.h)
