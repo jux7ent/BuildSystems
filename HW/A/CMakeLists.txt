@@ -1,12 +1,13 @@
 cmake_minimum_required(VERSION 3.10.2)
 project(A)
 
-if(UNIX)
+find_package(PythonInterp REQUIRED)
+if(PYTHONINTERP_FOUND)
     add_custom_command(
         OUTPUT index.h
-        COMMAND sudo apt-get update && sudo apt-get install python3 && python3 ${PROJECT_SOURCE_DIR}/preparing.py
+        COMMAND python ${PROJECT_SOURCE_DIR}/preparing.py
         DEPENDS ${PROJECT_SOURCE_DIR}/preparing.py
     )
-endif (UNIX)
+endif ()
 
 add_custom_target(gen_index DEPENDS index.h)
